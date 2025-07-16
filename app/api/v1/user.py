@@ -3,15 +3,16 @@ from sqlalchemy.orm import Session
 from app.schemas.user import UserCreate, UserRead
 from app.crud import user_crud
 from app.db.database import SessionLocal
+from app.core.deps import get_db
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+# def get_db():
+#     db = SessionLocal()
+#     try:
+#         yield db
+#     finally:
+#         db.close()
 
 @router.post("/", response_model=UserRead)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
