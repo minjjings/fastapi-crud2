@@ -1,3 +1,4 @@
+# Session은 SQLQlchemy에서 데이터베이스와 상호작용하기 위한 핵심 객체 
 from sqlalchemy.orm import Session
 from app.models.user import User
 from app.schemas.user import UserCreate
